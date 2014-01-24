@@ -9,7 +9,7 @@ public class ent_Statistics : MonoBehaviour {
 	public bool IsAlive { get; private set; }
 	
 	public int MoveSpeed { get; private set; }
-	public int SprintMultiplier { get; private set; }
+	public float SprintMultiplier { get; private set; }
 	public bool IsSprinting { get; private set; }
 	
 	
@@ -55,6 +55,15 @@ public class ent_Statistics : MonoBehaviour {
 	
 	
 	// Movement functions
+	public int SetSpeed(int value)
+	{
+		this.MoveSpeed = value;
+	}
+	public int SetMultiplier(float value)
+	{
+		this.SprintMultiplier = value;
+	}
+
 	public int CheckSpeed()
 	{
 		if(this.IsSprinting){

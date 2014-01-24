@@ -14,5 +14,13 @@ public class ent_Sprite : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public void SetStatistics(int health, int moveSpeed, float runMultiplier)
+	{
+
+		this.Statistics.SetHealth (health);
+		this.Statistics.SetSpeed (moveSpeed);
+		this.Statistics.SetMultiplier (runMultiplier);
+	}
 	
 }
