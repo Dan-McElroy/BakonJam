@@ -5,8 +5,10 @@ using System.Collections;
 public class env_Level : MonoBehaviour {
 	
 	// 0 = neutral, 1 = playerOne, 2 = playerTwo
-	public int currentReality;
-	
+	public RealityState currentReality;
+
+	public GameObject[] realities;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,5 +17,16 @@ public class env_Level : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void OnRealityAltered()
+	{
+		// Code to change level stuff
+		realities [currentReality].SetActive (true);
+		foreach (RealityState r in RealityState) {
+						if (r != currentReality) {
+								realities [r].SetActive (false);
+						}
+				}
 	}
 }
