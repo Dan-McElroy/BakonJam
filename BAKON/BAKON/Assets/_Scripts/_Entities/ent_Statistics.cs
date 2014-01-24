@@ -55,16 +55,16 @@ public class ent_Statistics : MonoBehaviour {
 	
 	
 	// Movement functions
-	public int SetSpeed(int value)
+	public void SetSpeed(int value)
 	{
 		this.MoveSpeed = value;
 	}
-	public int SetMultiplier(float value)
+	public void SetMultiplier(float value)
 	{
 		this.SprintMultiplier = value;
 	}
 
-	public int CheckSpeed()
+	public float CheckSpeed()
 	{
 		if(this.IsSprinting){
 			return this.MoveSpeed*this.SprintMultiplier;
