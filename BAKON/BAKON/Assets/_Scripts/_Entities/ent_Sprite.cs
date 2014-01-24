@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ent_Sprite : GameObject {
+public class ent_Sprite : MonoBehaviour {
 	
 	protected ent_Statistics Statistics { get; set; }
 	
