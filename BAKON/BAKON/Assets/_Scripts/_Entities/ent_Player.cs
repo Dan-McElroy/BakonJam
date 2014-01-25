@@ -9,7 +9,6 @@ public enum RealityState{
 
 public class ent_Player : ent_Sprite {
 
-
 	private RealityState realityState;
 	
 	private struct MovementKeys
@@ -20,17 +19,18 @@ public class ent_Player : ent_Sprite {
 		public KeyCode movementRight;
 	}
 	private MovementKeys PlayerMovement;
+	
+	public bool LeftControls = true;
 
 	
 	// Use this for initialization
 	void Start () {
+		setMovement ();
 	} // close Start()
 	
 	// Update is called once per frame
 	void Update () {
-
 		this.updateMovement();
-
 	} // close void Update()
 	
 	
@@ -48,10 +48,10 @@ public class ent_Player : ent_Sprite {
 
 
 	// Movement
-	public void setMovement(bool leftSide)
+	public void setMovement()
 	{
 
-		if (leftSide)
+		if (LeftControls)
 		{
 			PlayerMovement.movementUp = KeyCode.W;
 			PlayerMovement.movementDown = KeyCode.S;
@@ -80,22 +80,22 @@ public class ent_Player : ent_Sprite {
 
 		// Move Up
 		if (Input.GetKeyDown (PlayerMovement.movementUp)) { 
-			y = -this.Statistics.CheckSpeed()*Time.deltaTime;
+			y = -GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
 		}
 
 		// Move Down
 		if (Input.GetKeyDown (PlayerMovement.movementDown)) { 
-			y = this.Statistics.CheckSpeed()*Time.deltaTime;
+			y = GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
 		}
 
 		// Move Left
 		if (Input.GetKeyDown (PlayerMovement.movementLeft)) { 
-			x = -this.Statistics.CheckSpeed()*Time.deltaTime;
+			x = -GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
 		}
 		
 		// Move Right
 		if (Input.GetKeyDown (PlayerMovement.movementRight)) { 
-			x = this.Statistics.CheckSpeed()*Time.deltaTime;
+			x = GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
 		}
 
 		
