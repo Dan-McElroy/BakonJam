@@ -56,7 +56,7 @@ public class ent_ai : MonoBehaviour {
 				direction.Normalize();
 				
 				Vector3 velocity = Vector3.Scale(direction, new Vector3(MoveSpeed*Time.deltaTime, MoveSpeed*Time.deltaTime, 0f));
-				//this.transform.position += velocity;
+				this.transform.position += velocity;
 				
 				
 				
