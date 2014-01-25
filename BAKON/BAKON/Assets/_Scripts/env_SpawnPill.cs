@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class env_SpawnPill : MonoBehaviour {
 
-	GameObject[] pills;
-	Transform[] pillSpawnPoints;
-	float[] spawnTimers;
+	public GameObject[] pills;
+	public Transform[] pillSpawnPoints;
+	public float[] spawnTimers;
 
 	// Use this for initialization
 	void Start () {
