@@ -19,9 +19,17 @@ public class env_Bakon : MonoBehaviour {
 	{
 		if (coll.gameObject.GetComponent<ent_Player> () != null) 
 		{
-			RealityState newReality = (RealityState) coll.gameObject.GetComponent<ent_Player>().getReality();
-			level.currentReality = newReality;
-			level.BroadcastMessage("OnRealityAltered");
+			transform.parent = coll.gameObject.transform;
+			ChangeReality (coll.gameObject.GetComponent<ent_Player>());
 		}
 	}
+
+	void ChangeReality(ent_Player player)
+	{
+		level.currentReality = (RealityState)player.getReality ();
+		level.BroadcastMessage ("OnRealityAltered");
+	}
+
+	// NEXT JOB: HANDLING BAKON DROPPING
+
 }
