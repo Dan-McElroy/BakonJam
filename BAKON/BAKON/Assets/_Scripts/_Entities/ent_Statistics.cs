@@ -5,11 +5,11 @@ public class ent_Statistics : MonoBehaviour {
 	
 	
 	// Variable declerations
+	public int MaxHealth = 100;
 	public int Health = 100;
 	public int MoveSpeed = 10;
 	public float SprintMultiplier = 1.3f;
 
-	public bool IsAlive { get; private set; }
 	public bool IsSprinting { get; private set; }
 	
 	
@@ -29,26 +29,24 @@ public class ent_Statistics : MonoBehaviour {
 	
 	
 	
-	// health Functions
-	public void SetHealth(int value)
-	{
-		this.Health = value;
-	}
-	
-	public void Damage(int value)
-	{
-		Health -= value;
-	} // close Damage(int value)
-	
-	public void Heal(int value)
-	{
-		Health += value;
-	} // close Heal(int value)
-	
+	// health Functions	
 	public void Kill()
 	{
 		this.Health = 0;
-		this.IsAlive = false;
+	}
+
+	public void Revive()
+	{
+		this.Health = this.MaxHealth;
+	}
+
+	public bool IsAlive()
+	{
+		if(this.Health > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	
