@@ -29,8 +29,10 @@ public class ent_Player : ent_Sprite {
 		public KeyCode movementLeft;
 		public KeyCode movementRight;
 	}
+
 	private MovementKeys PlayerMovement;
-	public bool IsRespawning { get; private set; }
+	public bool IsRespawning = false;
+	public bool HasBacon = false;
 	
 	
 	// Use this for initialization
