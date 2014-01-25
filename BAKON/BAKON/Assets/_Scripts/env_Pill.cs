@@ -4,6 +4,7 @@ using System.Collections;
 public class env_Pill : MonoBehaviour {
 
 	public env_Level level;
+	public env_SpawnPill spawner;
 
 	public RealityState pillReality;
 
@@ -25,6 +26,7 @@ public class env_Pill : MonoBehaviour {
 			level.currentReality = pillReality;
 			level.OnRealityAltered();
 		}
+
 		Destroy (gameObject);
 	}
 }
