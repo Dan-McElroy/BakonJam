@@ -33,6 +33,7 @@ public class env_Level : MonoBehaviour {
 
 	void Reset()
 	{
-
+		bakon.transform = bakonSpawnPoint;
+		// possibly alter current reality
 	}
 }
