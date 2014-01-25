@@ -6,7 +6,7 @@ public class env_SpawnPill : MonoBehaviour {
 
 	public GameObject[] prefabs;
 	public GameObject[] pills;
-	public Transform[] pillSpawnPoints;
+	public Transform[] spawnPoints;
 	public float[] spawnTimers;
 
 	// Use this for initialization
@@ -15,7 +15,7 @@ public class env_SpawnPill : MonoBehaviour {
 		//pillSpawn
 		// note: spawnTimers should have size set in editor
 
-		List<Transform> availableSpawns = new List<Transform> (pillSpawnPoints);
+		List<Transform> availableSpawns = new List<Transform> (spawnPoints);
 
 		for (int i = 0; i < pills.Length; i++)
 		{
@@ -33,7 +33,7 @@ public class env_SpawnPill : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GameObject.FindGameObjectsWithTag("Pills").Length < 3)
+		if (GameObject.FindGameObjectsWithTag("Pills").Length < pills.Length)
 		{
 			for (int i = 0; i < pills.Length; i++)
 			{
@@ -42,17 +42,17 @@ public class env_SpawnPill : MonoBehaviour {
 					// pick an unused spawn point
 
 					List<Transform> availableSpawns = new List<Transform>();
-					for (int j = 0; j < pillSpawnPoints.Length; j++)
+					for (int j = 0; j < spawnPoints.Length; j++)
 					{
 						bool empty = true;
 						foreach (GameObject activePill in GameObject.FindGameObjectsWithTag("Pills"))
 						{
-							if (activePill.transform == pillSpawnPoints[j])
+							if (activePill.transform == spawnPoints[j])
 								empty = false;
 						}
 						if (empty)
 						{
-							availableSpawns.Add (pillSpawnPoints[j]);
+							availableSpawns.Add (spawnPoints[j]);
 						}
 					}
 					if (availableSpawns.Count > 0)
