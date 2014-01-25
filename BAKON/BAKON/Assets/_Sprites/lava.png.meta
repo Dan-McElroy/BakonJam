@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 785a0ee2f733f4f2da2278251c0b50b8
+guid: a188dcab78d2e4ae5841975c1abd99a4
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -40,6 +40,42 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: lava_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 388
+        width: 256
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: lava_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 261
+        width: 256
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: lava_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 134
+        width: 256
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: lava_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 256
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 
