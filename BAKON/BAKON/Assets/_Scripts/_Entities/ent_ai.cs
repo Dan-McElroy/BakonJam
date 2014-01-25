@@ -132,7 +132,7 @@ public class ent_ai : MonoBehaviour {
 		if (coll.gameObject.tag=="Player") 
 		{
 			ent_Statistics obj = coll.gameObject.GetComponent<ent_Statistics>();
-			//obj.Kill();
+			obj.Kill();
 		}
 	}
 	
