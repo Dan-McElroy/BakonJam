@@ -12,7 +12,9 @@ public enum MovementControls
 	Movement_01,
 	Movement_02,
 	Movement_03,
-	Movement_04
+	Movement_04,
+	Movement_05,
+	Movement_06
 }
 
 public class ent_Player : ent_Sprite {
@@ -75,6 +77,18 @@ public class ent_Player : ent_Sprite {
 			break;
 			
 		case MovementControls.Movement_04:
+			x = Input.GetAxis ("Horizontal_04")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("Vertical_04")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			break;
+			
+		case MovementControls.Movement_05:
+			x = Input.GetAxis ("Horizontal_05")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("Vertical_05")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			break;
+			
+		case MovementControls.Movement_06:
+			x = Input.GetAxis ("Horizontal_06")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("Vertical_06")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
 			break;
 		}
 		
