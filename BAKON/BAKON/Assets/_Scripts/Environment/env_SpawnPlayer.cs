@@ -11,13 +11,16 @@ public class env_SpawnPlayer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		players = GameObject.FindGameObjectsWithTag ("Player");
 		spawnTimers = new float[players.Length];
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
+		if (players.Length == 0 && GameObject.FindGameObjectsWithTag("Player").Length > 0)
+		{
+			players = GameObject.FindGameObjectsWithTag("Player");
+		}
 		if (GameObject.FindGameObjectsWithTag ("Player").Length < players.Length)
 		{
 			for (int i = 0; i < players.Length; i++)
