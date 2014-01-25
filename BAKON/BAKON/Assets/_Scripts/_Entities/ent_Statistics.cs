@@ -8,6 +8,7 @@ public class ent_Statistics : MonoBehaviour {
 	public int MaxHealth = 100;
 	public int Health = 100;
 	public int MoveSpeed = 10;
+	public int Score { get; private set; }
 	public float SprintMultiplier = 1.3f;
 
 	public bool IsSprinting { get; private set; }
@@ -79,6 +80,26 @@ public class ent_Statistics : MonoBehaviour {
 	public void StopRunning()
 	{
 		this.IsSprinting = false;
+	}
+
+
+
+
+
+	// Scoring
+	public void AddScore()
+	{
+		this.Score++;
+	}
+
+	public void RemoveScore()
+	{
+		this.Score++;
+	}
+
+	public int GetScore()
+	{
+		return this.Score;
 	}
 	
 } // close ent_Statistics
