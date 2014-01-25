@@ -17,7 +17,9 @@ public class env_Bakon : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll)
 	{
-		if (coll.gameObject.GetComponent<ent_Player> () != null) 
+		print ("collison");
+
+		if (coll.gameObject.tag=="Player") 
 		{
 			transform.parent = coll.gameObject.transform;
 			ChangeReality (coll.gameObject.GetComponent<ent_Player>());
