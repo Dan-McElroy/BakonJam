@@ -43,11 +43,31 @@ public class ent_ai : MonoBehaviour {
 		else
 		{
 
-			// Check target has 
-			if(target.GetComponent<ent_Statistics>().IsAlive())
+
+
+
+			// Check if we want to reassign target, if they hold the bacon
+			foreach (ent_Player gameObj in FindObjectsOfType(typeof(ent_Player)) as ent_Player[])
 			{
 
+				// Distance between target and ai
+				float playerDist = Vector3.Distance(this.transform.position, gameObj.transform.position);
+
+				if((playerDist <= TargetRange) && gameObj.HasBacon) { 
+					target = gameObj;
+				}
+			}
+
+
+
+
+			// Check target has health
+			if(target.GetComponent<ent_Statistics>().IsAlive())
+			{
+				
+				// Distance between target and ai
 				float targetDist = Vector3.Distance(this.transform.position, target.transform.position);
+
 				if(targetDist > TargetRange)
 				{
 					this.target = null;
@@ -112,7 +132,7 @@ public class ent_ai : MonoBehaviour {
 		if (coll.gameObject.tag=="Player") 
 		{
 			ent_Statistics obj = coll.gameObject.GetComponent<ent_Statistics>();
-			obj.Kill();
+			//obj.Kill();
 		}
 	}
 	
