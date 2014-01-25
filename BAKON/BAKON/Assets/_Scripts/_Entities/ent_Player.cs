@@ -30,6 +30,7 @@ public class ent_Player : ent_Sprite {
 		public KeyCode movementRight;
 	}
 	private MovementKeys PlayerMovement;
+	public bool IsRespawning { get; private set; }
 	
 	
 	// Use this for initialization
