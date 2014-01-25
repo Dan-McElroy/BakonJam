@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class env_SpawnPill : MonoBehaviour {
 
+	public GameObject[] prefabs;
 	public GameObject[] pills;
 	public Transform[] pillSpawnPoints;
 	public float[] spawnTimers;
@@ -13,6 +14,17 @@ public class env_SpawnPill : MonoBehaviour {
 		// pills should point to the in-game pill objects
 		//pillSpawn
 		// note: spawnTimers should have size set in editor
+
+		List<Transform> availableSpawns = new List<Transform> (pillSpawnPoints);
+
+		for (int i = 0; i < pills.Length; i++)
+		{
+			int index = Random.Range (0, availableSpawns.Count -1);
+			pills[i] = (GameObject) Instantiate (prefabs[i], availableSpawns[index].position, Quaternion.identity);
+			availableSpawns.RemoveAt(index);
+		}
+		print (availableSpawns.Count);
+
 		for (int i = 0; i < spawnTimers.Length; i++)
 		{
 			spawnTimers[i] = Time.time + Random.Range (2, 7);
@@ -25,7 +37,7 @@ public class env_SpawnPill : MonoBehaviour {
 		{
 			for (int i = 0; i < pills.Length; i++)
 			{
-				if (!pills[i].activeSelf && spawnTimers[i] < Time.time)
+				if (pills[i] == null && spawnTimers[i] < Time.time)
 				{
 					// pick an unused spawn point
 
@@ -46,24 +58,22 @@ public class env_SpawnPill : MonoBehaviour {
 					if (availableSpawns.Count > 0)
 					{
 						Transform newSpawn = availableSpawns[Random.Range(0, (availableSpawns.Count-1))];
-						pills[i].transform.position = newSpawn.position;
-						pills[i].SetActive(true);
+						pills[i] = (GameObject) Instantiate(prefabs[i], newSpawn.position, Quaternion.identity);
 					}
 				}
 			}
 		}
 	}
 
-	void DestroyPill(GameObject pill)
+	public void DestroyPill(GameObject pill)
 	{
 		for (int i = 0; i < pills.Length; i++)
 		{
 			if (pills[i] == pill)
 			{
-				pills[i].SetActive(false);
 				spawnTimers[i] = Time.time + Random.Range (2, 7);
-
 			}
 		}
+		Destroy(pill);
 	}
 }
