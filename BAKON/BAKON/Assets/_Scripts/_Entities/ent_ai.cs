@@ -44,7 +44,7 @@ public class ent_ai : MonoBehaviour {
 		{
 
 			// Check target has 
-			if(target.gameObject<ent_Statistics>().IsAlive())
+			if(target.GetComponent<ent_Statistics>().IsAlive())
 			{
 
 				float targetDist = Vector3.Distance(this.transform.position, target.transform.position);
