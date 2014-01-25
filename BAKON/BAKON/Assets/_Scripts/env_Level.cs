@@ -23,12 +23,12 @@ public class env_Level : MonoBehaviour {
 		
 	}
 
-	void OnRealityAltered()
+	public void OnRealityAltered()
 	{
 		// Code to change level stuff
-		realities [(int)RealityState.Reality_00].SetActive (currentReality != RealityState.Reality_00);
-		realities [(int)RealityState.Reality_01].SetActive (currentReality != RealityState.Reality_01);
-		realities [(int)RealityState.Reality_02].SetActive (currentReality != RealityState.Reality_02);
+		realities [(int)RealityState.Reality_00].SetActive (currentReality == RealityState.Reality_00);
+		realities [(int)RealityState.Reality_01].SetActive (currentReality == RealityState.Reality_01);
+		realities [(int)RealityState.Reality_02].SetActive (currentReality == RealityState.Reality_02);
 	}
 
 	void Reset()

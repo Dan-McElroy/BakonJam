@@ -17,12 +17,13 @@ public class env_Pill : MonoBehaviour {
 	
 	}
 
-	void OnCollision2D(Collision2D coll)
+	void OnCollisionEnter2D(Collision2D coll)
 	{
+		print ("collison");
 		if (coll.gameObject.tag == "Player")
 		{
 			level.currentReality = pillReality;
-			level.BroadcastMessage("OnRealityAltered");
+			level.OnRealityAltered();
 		}
 		Destroy (gameObject);
 	}
