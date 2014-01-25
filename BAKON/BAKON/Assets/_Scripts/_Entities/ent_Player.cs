@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public enum RealityState{
-	Realty_00,  // Neutral
+	Reality_00,  // Neutral
 	Reality_01,
 	Reality_02
 }
