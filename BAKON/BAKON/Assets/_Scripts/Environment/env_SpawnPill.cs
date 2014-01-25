@@ -6,7 +6,7 @@ public class env_SpawnPill : MonoBehaviour {
 
 	public GameObject[] prefabs;
 	public GameObject[] pills;
-	public Transform[] spawnPoints;
+	public Transform[] pillSpawnPoints;
 	public float[] spawnTimers;
 
 	// Use this for initialization
@@ -15,15 +15,24 @@ public class env_SpawnPill : MonoBehaviour {
 		//pillSpawn
 		// note: spawnTimers should have size set in editor
 
-		List<Transform> availableSpawns = new List<Transform> (spawnPoints);
+		List<Transform> availableSpawns = new List<Transform> (pillSpawnPoints);
 
-		for (int i = 0; i < pills.Length; i++)
+		if(availableSpawns.Count > 0)
 		{
-			int index = Random.Range (0, availableSpawns.Count -1);
-			pills[i] = (GameObject) Instantiate (prefabs[i], availableSpawns[index].position, Quaternion.identity);
-			availableSpawns.RemoveAt(index);
+			for (int i = 0; i < pills.Length; i++)
+			{
+				int index = Random.Range (0, availableSpawns.Count -1);
+
+				print ("Index: "+index);
+				print ("Available:"+availableSpawns.Count);
+				print ("Spawn: "+availableSpawns[index].position);
+
+
+				pills[i] = (GameObject) Instantiate (prefabs[i], availableSpawns[index].position, Quaternion.identity);
+				availableSpawns.RemoveAt(index);
+			}
 		}
-		print (availableSpawns.Count);
+
 
 		for (int i = 0; i < spawnTimers.Length; i++)
 		{
@@ -42,17 +51,17 @@ public class env_SpawnPill : MonoBehaviour {
 					// pick an unused spawn point
 
 					List<Transform> availableSpawns = new List<Transform>();
-					for (int j = 0; j < spawnPoints.Length; j++)
+					for (int j = 0; j < pillSpawnPoints.Length; j++)
 					{
 						bool empty = true;
 						foreach (GameObject activePill in GameObject.FindGameObjectsWithTag("Pills"))
 						{
-							if (activePill.transform == spawnPoints[j])
+							if (activePill.transform == pillSpawnPoints[j])
 								empty = false;
 						}
 						if (empty)
 						{
-							availableSpawns.Add (spawnPoints[j]);
+							availableSpawns.Add (pillSpawnPoints[j]);
 						}
 					}
 					if (availableSpawns.Count > 0)
