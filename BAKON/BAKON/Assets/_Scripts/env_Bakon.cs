@@ -22,7 +22,7 @@ public class env_Bakon : MonoBehaviour {
 		if (coll.gameObject.tag=="Player") 
 		{
 			transform.parent = coll.gameObject.transform;
-			ChangeReality (coll.gameObject.GetComponent<ent_Player>());
+			///ChangeReality (coll.gameObject.GetComponent<ent_Player>());
 		}
 	}
 

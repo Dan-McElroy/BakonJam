@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/env_Level.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/_Effects/anim_randomFrame.js">
     <Files>
-      <File FileName="Assets/_Scripts/env_Bakon.cs" Line="28" Column="1" />
-      <File FileName="Assets/_Scripts/env_Level.cs" Line="36" Column="2" />
+      <File FileName="Assets/_Scripts/env_Level.cs" Line="31" Column="72" />
+      <File FileName="Assets/_Scripts/env_Pill.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/_Effects/anim_randomFrame.js" Line="13" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
