@@ -7,9 +7,18 @@ public enum RealityState{
 	Reality_02
 }
 
-public class ent_Player : ent_Sprite {
+public enum MovementControls
+{
+	Movement_01,
+	Movement_02,
+	Movement_03,
+	Movement_04
+}
 
-	private RealityState realityState;
+public class ent_Player : ent_Sprite {
+	
+	public RealityState realityState = RealityState.Reality_00;
+	public MovementControls movementControls = MovementControls.Movement_01;
 	
 	private struct MovementKeys
 	{
@@ -20,8 +29,6 @@ public class ent_Player : ent_Sprite {
 	}
 	private MovementKeys PlayerMovement;
 	
-	public bool LeftControls = true;
-
 	
 	// Use this for initialization
 	void Start () {
@@ -42,27 +49,35 @@ public class ent_Player : ent_Sprite {
 	{
 		this.realityState = val;
 	}
-
+	
 	public void updateMovement()
 	{
-
+		
 		float x = 0;
 		float y = 0;
 		float z = 0;
-
-
 		
-		if (LeftControls)
+		switch(movementControls)
 		{
-			x = Input.GetAxis ("LeftHorizontal")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
-			y = Input.GetAxis ("LeftVertical")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
-		} // close if (LeftControls)
-		else
-		{
-			x = Input.GetAxis ("RightHorizontal")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
-			y = Input.GetAxis ("RightVertical")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+		case MovementControls.Movement_01:
+			x = Input.GetAxis ("Horizontal_01")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("Vertical_01")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			break;
+			
+		case MovementControls.Movement_02:
+			x = Input.GetAxis ("Horizontal_02")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("Vertical_02")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			break;
+			
+		case MovementControls.Movement_03:
+			x = Input.GetAxis ("Horizontal_03")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("Vertical_03")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			break;
+			
+		case MovementControls.Movement_04:
+			break;
 		}
-
+		
 		
 		transform.position += new Vector3 (x, y, z);
 	}
