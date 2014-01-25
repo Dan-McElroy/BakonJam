@@ -23,10 +23,6 @@ public class env_SpawnPill : MonoBehaviour {
 			{
 				int index = Random.Range (0, availableSpawns.Count -1);
 
-				print ("Index: "+index);
-				print ("Available:"+availableSpawns.Count);
-				print ("Spawn: "+availableSpawns[index].position);
-
 
 				pills[i] = (GameObject) Instantiate (prefabs[i], availableSpawns[index].position, Quaternion.identity);
 				availableSpawns.RemoveAt(index);

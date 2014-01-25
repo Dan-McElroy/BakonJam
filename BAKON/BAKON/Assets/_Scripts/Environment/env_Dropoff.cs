@@ -17,7 +17,6 @@ public class env_Dropoff : MonoBehaviour {
 	
 	void OnCollisionEnter2D (Collision2D coll)
 	{
-		print ("Collision: "+coll.gameObject.tag);
 		
 		if (coll.gameObject.tag=="Player") 
 		{

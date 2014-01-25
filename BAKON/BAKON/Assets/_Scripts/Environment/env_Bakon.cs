@@ -20,7 +20,6 @@ public class env_Bakon : MonoBehaviour {
 
 		if (coll.gameObject.tag=="Player") 
 		{
-			print ("Test");
 			transform.parent = coll.gameObject.transform;
 			ent_Player playerWithBacon = coll.gameObject.GetComponent<ent_Player>();
 
