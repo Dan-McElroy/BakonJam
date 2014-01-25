@@ -4,14 +4,21 @@ using System.Collections.Generic;
 
 public class env_SpawnPlayer : MonoBehaviour {
 
+	public bool dead;
 	public float waitDuration;
 	public GameObject[] players;
 	public Transform[] spawnPoints;
 	public float[] spawnTimers;
+	public env_Bakon bakon;
 
 	// Use this for initialization
 	void Start () {
-		spawnTimers = new float[players.Length];
+		GameObject[] spawnObjects = GameObject.FindGameObjectsWithTag ("Spawn_player");
+		spawnPoints = new Transform[spawnObjects.Length];
+		for (int i = 0; i < spawnObjects.Length; i++)
+		{
+			spawnPoints[i] = spawnObjects[i].transform;
+		}
 	}
 
 	// Update is called once per frame
@@ -20,6 +27,7 @@ public class env_SpawnPlayer : MonoBehaviour {
 		if (players.Length == 0 && GameObject.FindGameObjectsWithTag("Player").Length > 0)
 		{
 			players = GameObject.FindGameObjectsWithTag("Player");
+			spawnTimers = new float[players.Length];
 		}
 		if (GameObject.FindGameObjectsWithTag ("Player").Length < players.Length)
 		{
@@ -42,6 +50,7 @@ public class env_SpawnPlayer : MonoBehaviour {
 					int index = Random.Range (0, availableSpawns.Count -1);
 					Transform playerSpawn = availableSpawns[index];
 					players[i].transform.position = playerSpawn.position;
+					players[i].GetComponent<ent_Player>().IsRespawning = false;
 					players[i].SetActive(true);
 				}
 			}
@@ -50,8 +59,9 @@ public class env_SpawnPlayer : MonoBehaviour {
 		{
 			ent_Player player = p.GetComponent<ent_Player>();
 			ent_Statistics stats = p.GetComponent<ent_Statistics>();
-			if (!stats.IsAlive () && player.IsRespawning)
+			if (!stats.IsAlive () && !player.IsRespawning)
 			{
+				dead = true;
 				PlayerDeath(p);
 			}
 		}
