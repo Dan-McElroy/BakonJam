@@ -69,7 +69,6 @@ function Update () {
 
 function rayhittest ()
 {
-		print("click");
 		var hit : RaycastHit;
 		var ray : Ray ;
 		
