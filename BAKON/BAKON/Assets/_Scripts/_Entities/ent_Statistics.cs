@@ -5,9 +5,9 @@ public class ent_Statistics : MonoBehaviour {
 	
 	
 	// Variable declerations
-	public int Health;
-	public int MoveSpeed;
-	public float SprintMultiplier;
+	public int Health = 100;
+	public int MoveSpeed = 10;
+	public float SprintMultiplier = 1.3f;
 
 	public bool IsAlive { get; private set; }
 	public bool IsSprinting { get; private set; }

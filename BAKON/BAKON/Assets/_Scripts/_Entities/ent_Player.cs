@@ -25,7 +25,6 @@ public class ent_Player : ent_Sprite {
 	
 	// Use this for initialization
 	void Start () {
-		setMovement ();
 	} // close Start()
 	
 	// Update is called once per frame
@@ -44,30 +43,6 @@ public class ent_Player : ent_Sprite {
 		this.realityState = val;
 	}
 
-
-
-
-	// Movement
-	public void setMovement()
-	{
-
-		if (LeftControls)
-		{
-			PlayerMovement.movementUp = KeyCode.W;
-			PlayerMovement.movementDown = KeyCode.S;
-			PlayerMovement.movementLeft = KeyCode.A;
-			PlayerMovement.movementRight = KeyCode.D;
-		}
-		else
-		{
-			PlayerMovement.movementUp = KeyCode.Keypad8;
-			PlayerMovement.movementDown = KeyCode.Keypad2;
-			PlayerMovement.movementLeft = KeyCode.Keypad4;
-			PlayerMovement.movementRight = KeyCode.Keypad6;
-		}
-
-	}
-
 	public void updateMovement()
 	{
 
@@ -76,26 +51,16 @@ public class ent_Player : ent_Sprite {
 		float z = 0;
 
 
-
-
-		// Move Up
-		if (Input.GetKeyDown (PlayerMovement.movementUp)) { 
-			y = -GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
-		}
-
-		// Move Down
-		if (Input.GetKeyDown (PlayerMovement.movementDown)) { 
-			y = GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
-		}
-
-		// Move Left
-		if (Input.GetKeyDown (PlayerMovement.movementLeft)) { 
-			x = -GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
-		}
 		
-		// Move Right
-		if (Input.GetKeyDown (PlayerMovement.movementRight)) { 
-			x = GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+		if (LeftControls)
+		{
+			x = Input.GetAxis ("LeftHorizontal")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("LeftVertical")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+		} // close if (LeftControls)
+		else
+		{
+			x = Input.GetAxis ("RightHorizontal")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
+			y = Input.GetAxis ("RightVertical")*GetComponent<ent_Statistics>().CheckSpeed()*Time.deltaTime;
 		}
 
 		
