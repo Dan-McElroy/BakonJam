@@ -69,23 +69,22 @@ function Update () {
 
 function rayhittest ()
 {
-		//print("click");
+		print("click");
 		var hit : RaycastHit;
 		var ray : Ray ;
 		
-		if( GUICAMERA != null){
-		    ray = GUICAMERA.ScreenPointToRay (Input.mousePosition);
-		}else{
-			ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-		}
-
-		if (Physics.Raycast (ray, hit, 2000.0)){
-			//print("hit " + hit);
-			if (hit.collider.gameObject == gameObject)
-			{
+		var hit2d : RaycastHit2D = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if(hit2d.collider != null)
+        {
+            Debug.Log("object clicked: "+hit2d.collider.tag);
+        }
+		
+		
+		if (hit2d.collider.gameObject == gameObject)
+		{
 				//print("clicked");
 				return true;
-			}
 		}
+		
 		return false;
 }
