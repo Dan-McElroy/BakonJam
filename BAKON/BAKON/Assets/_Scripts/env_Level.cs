@@ -9,13 +9,13 @@ public class env_Level : MonoBehaviour {
 
 	public Transform bakonSpawnPoint;
 
-	public GameObject bakon;
+	public Transform bakon;
 
 	public GameObject[] realities;
 
 	// Use this for initialization
 	void Start () {
-		
+		bakon = GameObject.FindGameObjectWithTag ("Bakon").transform;
 	}
 	
 	// Update is called once per frame
@@ -33,7 +33,7 @@ public class env_Level : MonoBehaviour {
 
 	void Reset()
 	{
-		bakon.transform = bakonSpawnPoint;
+		bakon.position = bakonSpawnPoint.position;
 		// possibly alter current reality
 	}
 }
