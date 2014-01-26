@@ -34,6 +34,9 @@ public class ent_Player : ent_Sprite {
 	public bool IsRespawning = false;
 	public bool HasBacon = false;
 	
+	public int ActiveImage = 0;
+	public float ChangeTimeout = 0f;
+	
 	
 	// Use this for initialization
 	void Start () {
