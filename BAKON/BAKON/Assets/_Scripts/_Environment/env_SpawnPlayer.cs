@@ -34,7 +34,8 @@ public class env_SpawnPlayer : MonoBehaviour {
 		{
 			for (int i = 0; i < players.Length; i++)
 			{
-				if (!players[i].activeSelf && spawnTimers[i] < Time.time)
+				if (!players[i].activeSelf && spawnTimers[i] < Time.time
+				    && !players[i].GetComponent<ent_Player>().permaDeath)
 				{
 					List<Transform> availableSpawns = new List<Transform>(spawnPoints);
 					foreach (Transform spawn in spawnPoints)
