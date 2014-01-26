@@ -78,6 +78,12 @@ public class env_SpawnPlayer : MonoBehaviour {
 				ent_Player playerP = player.GetComponent<ent_Player>();
 				playerP.IsRespawning = true;
 				spawnTimers[i] = Time.time + waitDuration;
+				if (playerP.HasBacon)
+				{
+					playerP.HasBacon = false;
+					bakon.transform.parent = null;
+					bakon.Reset ();
+				}
 			}
 		}
 	}
