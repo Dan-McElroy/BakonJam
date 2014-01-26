@@ -34,6 +34,7 @@ public class ent_Statistics : MonoBehaviour {
 	public void Kill()
 	{
 		this.Health = 0;
+		snd_Manager.Instance.PlaySound("Death");
 	}
 
 	public void Revive()
