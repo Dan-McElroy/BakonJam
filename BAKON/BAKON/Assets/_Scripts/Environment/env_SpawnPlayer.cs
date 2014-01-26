@@ -54,23 +54,28 @@ public class env_SpawnPlayer : MonoBehaviour {
 					ent_Statistics stats = players[i].GetComponent<ent_Statistics>();
 					stats.Health = stats.MaxHealth;
 					players[i].GetComponent<ent_Player>().IsRespawning = false;
-					players[i].gameObject.GetComponent<BoxCollider2D>().enabled = false;
+					players[i].GetComponent<BoxCollider2D>().enabled = false;
 					players[i].SetActive(true);
 				}
-				else if (players[i].activeSelf && spawnTimers[i] + invincibilityDuration < Time.time
-				         && players[i].gameObject.GetComponent<BoxCollider2D>().enabled == false)
+				else if (players[i].activeSelf && (float) (spawnTimers[i] + invincibilityDuration) < Time.time
+				         && players[i].GetComponent<BoxCollider2D>().enabled == false)
 				{
-					players[i].gameObject.GetComponent<BoxCollider2D>().enabled = true;
+					players[i].GetComponent<BoxCollider2D>().enabled = true;
 				}
 			}
 		}
-		foreach (GameObject p in players)
+		for (int i = 0; i < players.Length; i++)
 		{
-			ent_Player player = p.GetComponent<ent_Player>();
-			ent_Statistics stats = p.GetComponent<ent_Statistics>();
+			if (players[i].activeSelf && spawnTimers[i] + invincibilityDuration < Time.time
+			    && players[i].GetComponent<BoxCollider2D>().enabled == false)
+			{
+				players[i].GetComponent<BoxCollider2D>().enabled = true;
+			}
+			ent_Player player = players[i].GetComponent<ent_Player>();
+			ent_Statistics stats = players[i].GetComponent<ent_Statistics>();
 			if (!stats.IsAlive () && !player.IsRespawning)
 			{
-				PlayerDeath(p);
+				PlayerDeath(players[i]);
 			}
 		}
 	}
