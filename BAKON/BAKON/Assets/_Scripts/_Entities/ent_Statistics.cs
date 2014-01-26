@@ -7,8 +7,8 @@ public class ent_Statistics : MonoBehaviour {
 	// Variable declerations
 	public int MaxHealth = 100;
 	public int Health = 100;
-	public int MoveSpeed = 10;
-	public int Score { get; private set; }
+	public float MoveSpeed = 10;
+	public int Score = 0;
 	public float SprintMultiplier = 1.3f;
 
 	public bool IsSprinting { get; private set; }

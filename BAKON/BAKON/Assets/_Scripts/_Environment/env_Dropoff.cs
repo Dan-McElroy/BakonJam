@@ -21,7 +21,8 @@ public class env_Dropoff : MonoBehaviour {
 			ent_Player obj = coll.gameObject.GetComponent<ent_Player>();
 			if(obj.HasBacon)
 			{
-				
+				snd_Manager.Instance.PlaySound("Score");
+
 				// Increase player score
 				ent_Statistics stats = coll.gameObject.GetComponent<ent_Statistics>();
 				stats.AddScore();
