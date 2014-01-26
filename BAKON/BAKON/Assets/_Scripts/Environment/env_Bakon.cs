@@ -4,10 +4,12 @@ using System.Collections;
 public class env_Bakon : MonoBehaviour {
 	
 	public env_Level level;
+	public Transform pedestal;
 
 	// Use this for initialization
 	void Start () {
 		level = GameObject.FindGameObjectWithTag ("Level").GetComponent<env_Level>();
+		pedestal = GameObject.FindGameObjectWithTag ("bacon_pedestal").transform;
 	}
 	
 	// Update is called once per frame
@@ -41,6 +43,8 @@ public class env_Bakon : MonoBehaviour {
 		level.BroadcastMessage ("OnRealityAltered");
 	}
 
-	// NEXT JOB: HANDLING BAKON DROPPING
-
+	public void Reset()
+	{
+		transform.position = pedestal.position;
+	}
 }
