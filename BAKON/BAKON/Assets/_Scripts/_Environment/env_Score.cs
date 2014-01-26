@@ -12,6 +12,9 @@ public class env_Score : MonoBehaviour {
 	public GameObject startMenu;
 	public GameObject playerObjectContainer;
 
+	public GameObject endMenu;
+	public TextMesh  endMessage;
+
 	private bool begun = false;
 
 
@@ -19,6 +22,8 @@ public class env_Score : MonoBehaviour {
 	void Begin () {
 
 		GameObject[] playerObjects = GameObject.FindGameObjectsWithTag ("Player");
+		players = new ent_Statistics[playerObjects.Length];
+
 		for (int i = 0; i < playerObjects.Length; i++)
 		{
 			players[i] = playerObjects[i].GetComponent<ent_Statistics>();
@@ -43,12 +48,27 @@ public class env_Score : MonoBehaviour {
 				EndGame ();
 			}
 		}
+
+
+	
 	}
+	
+
+	// WIND CODITION
 
 	void EndGame()
 	{
 		finalDuration = Time.time - timeGameStarted;
 		playerObjectContainer.SetActive (false);
+		endMenu.SetActive(true);
+		endMessage.text = winnerMessage();
+
+		for (int i = 0; i < players.Length; i++)
+		{
+			players[i].Score = 0;
+			players[i].Kill();
+		}
+
 	}
 
 	public string winnerMessage()
@@ -59,7 +79,7 @@ public class env_Score : MonoBehaviour {
 		}
 		else 
 		{
-			return "Congratulations, player " + winnerIndex + "!";
+			return "Congratulations, player " + winnerIndex + " WINS !!";
 		}
 	}
 }

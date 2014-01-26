@@ -111,7 +111,7 @@ public class env_Pill : MonoBehaviour {
 
 	void AffectAllSpeed(float multiplier)
 	{
-		effectTarget = GameObject.FindGameObjectsWithTag ("Player");
+		effectTarget = new List<GameObject> (GameObject.FindGameObjectsWithTag ("Player"));
 		foreach (GameObject player in effectTarget)
 		{
 			originalValue = player.GetComponent<ent_Statistics>().MoveSpeed;
