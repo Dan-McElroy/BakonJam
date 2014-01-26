@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class OT_PlayerJoin : MonoBehaviour {
 
 	public Texture2D [] characters;
-	public Vector2 DrawStartPoint = new Vector2(100, 100);
 	public List<ent_Player> AvailablePlayers;
 
 	void Start()
@@ -18,14 +17,13 @@ public class OT_PlayerJoin : MonoBehaviour {
 		int playerIndex = 0;
 		foreach(ent_Player player in AvailablePlayers)
 		{
+
+			float screenCentre = (Screen.width / 2);
+			float totalWidth = 150*AvailablePlayers.Count;
+			float startX = screenCentre - (totalWidth/2);
+
 			
-			GUI.DrawTexture(
-				new Rect(DrawStartPoint.x + (playerIndex*150), DrawStartPoint.y, 115, 115),
-				characters[player.ActiveImage],
-				ScaleMode.ScaleToFit,
-				true, 
-				0
-			);
+			GUI.DrawTexture(new Rect(startX + (playerIndex*150), Screen.height-130, 115, 115), characters[player.ActiveImage], ScaleMode.ScaleToFit, true, 0);
 
 			if(player.ChangeTimeout > 0)
 			{
