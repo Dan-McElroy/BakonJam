@@ -125,7 +125,7 @@ public class OT_PlayerJoin : MonoBehaviour {
 
 					alivePlayerList.Add(value);
 
-					// Link score based on entry.Value
+					// Link score based on entry.Value	
 					GameObject.Find ("Score_p"+key).GetComponent<gui_playerScore>().stats = AvailablePlayers[entry.Key].GetComponent<ent_Statistics>();
 
 
