@@ -14,6 +14,7 @@ public class env_Score : MonoBehaviour {
 
 	public GameObject endMenu;
 	public TextMesh  endMessage;
+	public GameObject winnerSprite;
 
 	private bool begun = false;
 
@@ -45,7 +46,10 @@ public class env_Score : MonoBehaviour {
 			if (players[i].Score == winningScore)
 			{
 				winnerIndex = i;
+				//CHANGE WINNER SPRITE
+				winnerSprite.GetComponent<SpriteRenderer>().sprite = players[i].GetComponent<SpriteRenderer>().sprite;
 				EndGame ();
+
 			}
 		}
 
@@ -61,7 +65,6 @@ public class env_Score : MonoBehaviour {
 		finalDuration = Time.time - timeGameStarted;
 		playerObjectContainer.SetActive (false);
 		endMenu.SetActive(true);
-		endMessage.text = winnerMessage();
 
 		for (int i = 0; i < players.Length; i++)
 		{

@@ -2,13 +2,14 @@
 
 var hideGO : GameObject[];
 var showGO : GameObject[];
+var keypress : String = "space";
 
 function Start () {
 
 }
 
 function Update () {
-	if (Input.GetKeyDown ("space")){
+	if (Input.GetKeyDown (keypress)){
 			print ("space key was pressed");
 			
 			for(var obj2:GameObject in showGO){

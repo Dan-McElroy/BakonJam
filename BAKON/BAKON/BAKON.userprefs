@@ -1,9 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/_Sounds/snd_PlaySound.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/_Gui/OT_PlayerJoin.cs">
     <Files>
-      <File FileName="Assets/_Scripts/_Sounds/snd_Collider.cs" Line="14" Column="4" />
-      <File FileName="Assets/_Scripts/_Sounds/snd_PlaySound.cs" Line="16" Column="2" />
+      <File FileName="Assets/_Scripts/_Sounds/snd_Collider.cs" Line="9" Column="25" />
+      <File FileName="Assets/_Scripts/_Sounds/snd_PlaySound.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/_Environment/env_Score.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/_Environment/env_Dropoff.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/_Environment/env_Pill.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/_Entities/ent_Statistics.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/_Gui/OT_PlayerJoin.cs" Line="50" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

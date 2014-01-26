@@ -6,11 +6,12 @@ public class OT_PlayerJoin : MonoBehaviour {
 
 	public Texture2D [] characters;	
 	public List<ent_Player> AvailablePlayers;
-	
-	bool is_playing = false;
+
+	public bool is_playing = false;
 
 	void Start()
 	{
+
 	}
 
 	void OnGUI ()
