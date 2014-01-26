@@ -91,6 +91,7 @@ public class OT_PlayerJoin : MonoBehaviour {
 				{
 					player.GetComponent<ent_Statistics>().Kill();
 					player.IsRespawning = false;
+					player.permaDeath = true;
 				}
 			}
 
