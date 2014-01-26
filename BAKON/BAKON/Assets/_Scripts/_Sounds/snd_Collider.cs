@@ -1,0 +1,17 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class snd_Collider : MonoBehaviour {
+
+	public string targetTag = "";
+
+	public string soundName;
+	// Update is called once per frame
+	void OnCollision2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == targetTag || targetTag == "")
+		{
+			snd_Manager.Instance.PlaySound(soundName);
+		}
+	}
+}
