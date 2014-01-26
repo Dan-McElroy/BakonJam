@@ -8,6 +8,7 @@ public class env_SpawnPlayer : MonoBehaviour {
 	public GameObject[] players;
 	public Transform[] spawnPoints;
 	public float[] spawnTimers;
+	public float invincibilityDuration;
 	public env_Bakon bakon;
 
 	// Use this for initialization
@@ -53,7 +54,13 @@ public class env_SpawnPlayer : MonoBehaviour {
 					ent_Statistics stats = players[i].GetComponent<ent_Statistics>();
 					stats.Health = stats.MaxHealth;
 					players[i].GetComponent<ent_Player>().IsRespawning = false;
+					players[i].gameObject.GetComponent<BoxCollider2D>().enabled = false;
 					players[i].SetActive(true);
+				}
+				else if (players[i].activeSelf && spawnTimers[i] + invincibilityDuration < Time.time
+				         && players[i].gameObject.GetComponent<BoxCollider2D>().enabled == false)
+				{
+					players[i].gameObject.GetComponent<BoxCollider2D>().enabled = true;
 				}
 			}
 		}
