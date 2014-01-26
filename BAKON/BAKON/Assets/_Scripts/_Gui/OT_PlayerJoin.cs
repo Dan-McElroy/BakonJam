@@ -94,8 +94,6 @@ public class OT_PlayerJoin : MonoBehaviour {
 				
 		if(Input.GetAxis ("start") != 0 && !is_playing)
 		{
-			
-			is_playing = true;
 
 			Dictionary<int, int> AlivePlayers = new Dictionary<int, int>();
 			for(int i_player = 0; i_player < AvailablePlayers.Count; i_player++)
@@ -112,49 +110,60 @@ public class OT_PlayerJoin : MonoBehaviour {
 
 
 
-
-			// left keyset wants right player(-1)
-			List<int> alivePlayerList = new List<int>();
-			foreach(KeyValuePair<int, int> entry in AlivePlayers)
+			if(AlivePlayers.Count > 0)
 			{
-
-				int key = entry.Key+1;
-				int value = entry.Value-1;
-
-				alivePlayerList.Add(value);
-
-				switch(key)
-				{
-				case 1:
-					AvailablePlayers[value].movementControls = MovementControls.Movement_01;
-					break;
-				case 2:
-					AvailablePlayers[value].movementControls = MovementControls.Movement_02;
-					break;
-				case 3:
-					AvailablePlayers[value].movementControls = MovementControls.Movement_03;
-					break;
-				case 4:
-					AvailablePlayers[value].movementControls = MovementControls.Movement_04;
-					break;
-				case 5:
-					AvailablePlayers[value].movementControls = MovementControls.Movement_05;
-					break;
-				case 6:
-					AvailablePlayers[value].movementControls = MovementControls.Movement_06;
-					break;
-				}
 				
-			} // close foreach(KeyValuePair<string, string> entry in AlivePlayers)
+				is_playing = true;
 
-			
-			for(int i_player = 0; i_player < AvailablePlayers.Count; i_player++)
-			{
-				if(!alivePlayerList.Contains(i_player))
+				// left keyset wants right player(-1)
+				List<int> alivePlayerList = new List<int>();
+				foreach(KeyValuePair<int, int> entry in AlivePlayers)
 				{
-					AvailablePlayers[i_player].GetComponent<ent_Statistics>().Kill();
-					AvailablePlayers[i_player].IsRespawning = false;
-					AvailablePlayers[i_player].permaDeath = true;
+
+					int key = entry.Key+1;
+					int value = entry.Value-1;
+
+					alivePlayerList.Add(value);
+
+					// Link score based on entry.Value	
+					GameObject.Find ("Score_p"+key).GetComponent<gui_playerScore>().stats = AvailablePlayers[entry.Key].GetComponent<ent_Statistics>();
+
+
+					switch(key)
+					{
+					case 1:
+						AvailablePlayers[value].movementControls = MovementControls.Movement_01;
+						break;
+					case 2:
+						AvailablePlayers[value].movementControls = MovementControls.Movement_02;
+						break;
+					case 3:
+						AvailablePlayers[value].movementControls = MovementControls.Movement_03;
+						break;
+					case 4:
+						AvailablePlayers[value].movementControls = MovementControls.Movement_04;
+						break;
+					case 5:
+						AvailablePlayers[value].movementControls = MovementControls.Movement_05;
+						break;
+					case 6:
+						AvailablePlayers[value].movementControls = MovementControls.Movement_06;
+						break;
+					}
+					
+				} // close foreach(KeyValuePair<string, string> entry in AlivePlayers)
+
+				
+				for(int i_player = 0; i_player < AvailablePlayers.Count; i_player++)
+				{
+					if(!alivePlayerList.Contains(i_player))
+					{
+						AvailablePlayers[i_player].GetComponent<ent_Statistics>().Kill();
+						AvailablePlayers[i_player].IsRespawning = false;
+						AvailablePlayers[i_player].permaDeath = true;
+
+						GameObject.Find ("Score_p"+(i_player+1)).GetComponent<gui_playerScore>().stats = AvailablePlayers[i_player].GetComponent<ent_Statistics>();
+					}
 				}
 			}
 			
