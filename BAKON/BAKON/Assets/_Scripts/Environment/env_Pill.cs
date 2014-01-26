@@ -25,7 +25,7 @@ public class env_Pill : MonoBehaviour {
 		{
 			level.currentReality = pillReality;
 			level.OnRealityAltered();
+			spawner.DestroyPill (gameObject);
 		}
-		spawner.DestroyPill (gameObject);
 	}
 }
