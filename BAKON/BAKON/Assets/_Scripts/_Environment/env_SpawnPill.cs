@@ -9,11 +9,18 @@ public class env_SpawnPill : MonoBehaviour {
 	public Transform[] pillSpawnPoints;
 	public float[] spawnTimers;
 
+	public float timerRangeLower, timerRangeUpper;
+
+	private int playerCount; 
+
+	private GameObject menu;
+
 	// Use this for initialization
 	void Start () {
 		// pills should point to the in-game pill objects
 		//pillSpawn
 		// note: spawnTimers should have size set in editor
+		menu = GameObject.Find ("MenuMain");
 
 		List<Transform> availableSpawns = new List<Transform> (pillSpawnPoints);
 
@@ -32,12 +39,17 @@ public class env_SpawnPill : MonoBehaviour {
 
 		for (int i = 0; i < spawnTimers.Length; i++)
 		{
-			spawnTimers[i] = Time.time + Random.Range (2, 7);
+			spawnTimers[i] = 0;
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (playerCount == null && !menu.activeSelf)
+		{
+			playerCount = GameObject.FindGameObjectsWithTag("Player").Length;
+		}
 		if (GameObject.FindGameObjectsWithTag("Pills").Length < pills.Length)
 		{
 			for (int i = 0; i < pills.Length; i++)
@@ -76,7 +88,7 @@ public class env_SpawnPill : MonoBehaviour {
 		{
 			if (pills[i] == pill)
 			{
-				spawnTimers[i] = Time.time + Random.Range (2, 7);
+				spawnTimers[i] = Time.time + Random.Range (timerRangeLower*playerCount, timerRangeUpper*playerCount);
 			}
 		}
 		Destroy(pill);

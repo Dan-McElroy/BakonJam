@@ -17,7 +17,7 @@ public class snd_Manager : MonoBehaviour {
 		Instance = this;
 	}
 
-	void PlaySound(string clipName)
+	public void PlaySound(string clipName)
 	{
 		int index = 0;
 		while (clipNames[index] !=  clipName)
