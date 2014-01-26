@@ -36,6 +36,8 @@ public class ent_Player : ent_Sprite {
 	
 	public int ActiveImage = 0;
 	public float ChangeTimeout = 0f;
+
+	public bool permaDeath = false;
 	
 	
 	// Use this for initialization
