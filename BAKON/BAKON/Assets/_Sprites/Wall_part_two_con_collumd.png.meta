@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 69d2ba5f7c4ff4b4ca583cf24e51617d
+guid: a4597a7c2d30e46c0af376d562437c16
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -24,9 +24,9 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -44,6 +44,24 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Wall_part_two_con_collumd_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 116
+        width: 385
+        height: 91
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Wall_part_two_con_collumd_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 48
+        width: 383
+        height: 68
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
