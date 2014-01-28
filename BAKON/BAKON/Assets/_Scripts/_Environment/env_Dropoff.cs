@@ -23,6 +23,9 @@ public class env_Dropoff : MonoBehaviour {
 			{
 				snd_Manager.Instance.PlaySound("Score");
 
+				// Play Animation
+				GetComponent<Animator>().SetTrigger("burp");
+
 				// Increase player score
 				ent_Statistics stats = coll.gameObject.GetComponent<ent_Statistics>();
 				stats.AddScore();
