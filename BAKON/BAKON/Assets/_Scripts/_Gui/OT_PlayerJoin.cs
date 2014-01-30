@@ -44,12 +44,12 @@ public class OT_PlayerJoin : MonoBehaviour {
 			string input_axis = string.Format("Vertical_0{0}", playerIndex);
 			if(Input.GetAxis (input_axis) > 0)
 			{
-				
+
+
 				if(player.ChangeTimeout <= 0)
 				{
 					int next_active = player.ActiveImage+1;
-					
-					
+					snd_Manager.Instance.PlaySound("MenuButton");
 					
 					// Get list of indeces already used
 					List<int> existingChoice = new List<int>();
